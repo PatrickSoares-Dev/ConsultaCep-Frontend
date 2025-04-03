@@ -1,0 +1,61 @@
+.billing-card {
+  margin-bottom: 2rem; 
+  padding: 2rem;
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+  font-family: 'Segoe UI', sans-serif;
+  max-width: 100%;
+}
+
+
+.billing-card h3 {
+  margin-bottom: 1rem;
+  color: #1e90ff;
+}
+
+.billing-card p {
+  margin: 0.5rem 0;
+  color: #333;
+}
+
+.billing-actions {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.billing-actions button {
+  background-color: #1e90ff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.billing-actions button:hover {
+  background-color: #1c86ee;
+}
+
+.billing-card .error {
+  color: #e74c3c;
+  margin-top: 1rem;
+}
+
+.logout-button {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 0.7rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.logout-button:hover {
+  background-color: #c0392b;
+}
