@@ -25,7 +25,8 @@ const successResponse = responseData
 
   return (
     <div className="api-preview">
-      <h3>📘 Documentação da API</h3>
+      <h3>📘Documentação /GET CEP</h3>
+      <h5>Documentação completa em: http://127.0.0.1:8000/docs</h5>
 
       <div>
         <h4>Base URL</h4>

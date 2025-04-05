@@ -1,0 +1,124 @@
+/* Reset geral */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body, html, #root {
+  height: 100%;
+  background-image: url('../../assets/img/background.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.App {
+  height: 100%;
+}
+
+.login-container {
+  height: 100vh;
+  width: 25vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.login-form,
+.register-form {
+  background: white;
+  padding: 3.5rem 6rem; 
+  border-radius: 16px;
+  width: 100%;
+  max-width: 1280px; 
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+}
+
+.login-form h2,
+.register-form h2 {
+  text-align: center;
+  font-size: 1.9rem;
+  color: #1e90ff;
+}
+
+.login-form input,
+.register-form input {
+  padding: 0.8rem;
+  font-size: 1rem;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  outline: none;
+  transition: border 0.2s ease-in-out;
+  width: 100%; 
+}
+
+.login-form input:focus,
+.register-form input:focus {
+  border-color: #1e90ff;
+}
+
+
+.login-form button,
+.register-form button {
+  padding: 1.1rem;
+  font-size: 1.1rem;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.login-form button[type="submit"],
+.register-form button[type="submit"] {
+  background-color: #a9bfd4;
+  color: white;
+  border: none;
+}
+
+.login-form button[type="submit"]:hover,
+.register-form button[type="submit"]:hover {
+  background-color: #1c86ee;
+}
+
+.button-secondary {
+  background-color: transparent;
+  color: #1e90ff;
+  border: 2px solid #1e90ff;
+}
+
+.button-secondary:hover {
+  background-color: #e6f0ff;
+}
+
+.signup-text {
+  text-align: center;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.signup-link {
+  color: #1e90ff;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.signup-link:hover {
+  color: #005fc1;
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .login-form,
+  .register-form {
+    padding: 2rem;
+    max-width: 90%;
+  }
+}

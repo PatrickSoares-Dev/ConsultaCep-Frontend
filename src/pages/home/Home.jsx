@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { obterToken } from '@/services/auth';
 import { FaSearch } from 'react-icons/fa';
+
 import ApiDoc from '../../components/ApiDoc/ApiDoc';
 import BillingInfo from '../../components/Billing/BillingInfo';
 import HistoricoConsulta from '../../components/Historico/HistoricoConsulta';
@@ -10,6 +11,7 @@ import './Home.css';
 
 export default function Home() {
   const navigate = useNavigate();
+
   const [cep, setCep] = useState('');
   const [logradouro, setLogradouro] = useState('');
   const [bairro, setBairro] = useState('');
@@ -19,16 +21,36 @@ export default function Home() {
   const [respostaApi, setRespostaApi] = useState(null);
   const [tokenValido, setTokenValido] = useState(false);
 
-  const token = obterToken();
+  const [historico, setHistorico] = useState([]);
 
+  const token = obterToken();
   const nomeCompleto = localStorage.getItem('full_name') || 'Usuário';
   const primeiroNome = nomeCompleto.split(' ')[0];
+
+  // Atualiza o histórico chamando a API
+  const atualizarHistorico = async () => {
+    try {
+      const response = await fetch('http://127.0.0.1:8000/cep/historico', {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      const data = await response.json();
+      if (data.success) {
+        setHistorico(data.data);
+      } else {
+        console.warn('Não foi possível carregar o histórico.');
+      }
+    } catch (error) {
+      console.error('Erro ao buscar histórico:', error);
+    }
+  };
 
   useEffect(() => {
     if (!token) {
       navigate('/');
     } else {
       setTokenValido(true);
+      atualizarHistorico();
     }
   }, [navigate, token]);
 
@@ -52,6 +74,8 @@ export default function Home() {
         setUf(uf);
         setErro('');
         setRespostaApi(data);
+
+        await atualizarHistorico(); // Atualiza histórico após consulta bem-sucedida
       } else {
         setErro(data.message || 'CEP não encontrado');
         limparCampos();
@@ -129,7 +153,6 @@ export default function Home() {
                 id="logradouro"
                 value={logradouro}
                 disabled
-                required
                 placeholder=" "
               />
               <label htmlFor="logradouro">Rua</label>
@@ -141,7 +164,6 @@ export default function Home() {
                 id="bairro"
                 value={bairro}
                 disabled
-                required
                 placeholder=" "
               />
               <label htmlFor="bairro">Bairro</label>
@@ -153,7 +175,6 @@ export default function Home() {
                 id="localidade"
                 value={localidade}
                 disabled
-                required
                 placeholder=" "
               />
               <label htmlFor="localidade">Cidade</label>
@@ -165,7 +186,6 @@ export default function Home() {
                 id="uf"
                 value={uf}
                 disabled
-                required
                 placeholder=" "
               />
               <label htmlFor="uf">Estado</label>
@@ -175,7 +195,10 @@ export default function Home() {
           {erro && <p className="error-message">{erro}</p>}
         </form>
 
-        <HistoricoConsulta />
+        <HistoricoConsulta
+          historico={historico}
+          atualizarHistorico={atualizarHistorico}
+        />
       </div>
 
       <div style={{ flex: 1, maxWidth: '600px', minWidth: '360px' }}>

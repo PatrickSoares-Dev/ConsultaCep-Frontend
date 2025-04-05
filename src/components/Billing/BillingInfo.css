@@ -59,3 +59,73 @@
 .logout-button:hover {
   background-color: #c0392b;
 }
+
+.billing-update {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.billing-update input {
+  flex: 1;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.billing-update button {
+  padding: 0.5rem 1rem;
+  background-color: #1e90ff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.billing-update button:hover {
+  background-color: #1c86ee;
+}
+
+.success {
+  color: green;
+  margin-bottom: 0.5rem;
+}
+
+.billing-actions {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.billing-actions button {
+  background-color: #1e90ff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.billing-actions button:hover {
+  background-color: #1c86ee;
+}
+
+.logout-button {
+  background-color: #e74c3c !important;
+}
+
+.logout-button:hover {
+  background-color: #c0392b !important;
+}
+
+.billing-actions button:nth-child(3) {
+  background-color: #e74c3c;
+}
+
+.billing-actions button:nth-child(3):hover {
+  background-color: #c0392b;
+}
